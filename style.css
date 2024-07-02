@@ -1,0 +1,51 @@
+
+body{
+    background-image: linear-gradient(rgba(110, 118, 238, 0.766),rgba(160, 58, 95, 0.596),rgba(184, 61, 246, 0.759));
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 20px dotted rgb(11, 1, 42);
+    border-radius: 30px;
+    outline: 15px solid rgb(53, 1, 43);
+    outline-offset: -50px;
+    height:92.5vh;
+
+}
+
+.clock{
+    text-align: center;
+    margin-top: 20vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1{
+    font-size: 10vw;
+    background: #3333332f;
+    width: fit-content;
+    padding: 0 15px;
+    margin: auto;
+    border-radius: 10px;
+}
+h2{
+    font-size: 6vw;
+    
+    text-shadow: 0px 0px 12px rgb(38, 0, 154);
+}
+
+.circle{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    background-image: linear-gradient(black,rgb(0, 0, 113),rgb(110, 1, 110));
+    position: absolute;
+    top: 11.6vh;
+    right: 130px;
+}
+
+.slider{
+    height: 58.5px;
+    width: 100px;
+    border-radius: 28.3px;
+    background: rgba(0, 0, 0, 0.277);
+    position: absolute;
+    top: 11vh;
+    right: 85px;
+}
