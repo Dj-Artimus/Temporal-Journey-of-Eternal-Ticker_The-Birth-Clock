@@ -16,13 +16,16 @@ body{
     margin-top: 20vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-h1{
+h1,#birthTicker{
     font-size: 10vw;
     background: #3333332f;
     width: fit-content;
     padding: 0 15px;
     margin: auto;
     border-radius: 10px;
+}
+#birthTicker{
+    width: 85%;
 }
 h2{
     font-size: 6vw;
