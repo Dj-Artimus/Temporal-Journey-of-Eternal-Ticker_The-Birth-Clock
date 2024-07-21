@@ -13,26 +13,37 @@ body{
     background-size: cover;
     width: 100vw;
     height: 100vh;
+    /* visibility: hidden; */
     /* overflow: hidden; */
+    transition:filter 2s linear , opacity 3.5s linear;
+    /* position: relative; */
 }
 .gred1{
     background-image: linear-gradient(60deg,#09e1e162 10%,#17005800 50%) ;
     width: 100vw;
     height: 100vh;
+    position: absolute;
+    z-index: -1;
+    transition: opacity 2s linear;
+
 }
 .gred2{
     background-image: radial-gradient(closest-side at 40% 40% , rgba(2, 3, 49, 0.8),rgba(20, 20, 221, 0.149));
     width: 100vw;
     height: 100vh;
+    transition: opacity 2s linear;
 }
 .gred3{
     width: 100vw;
     height: 100vh;
     background-image: radial-gradient( closest-side at 95% 4%, rgba(2, 76, 146, 0.845) 30%, rgba(189, 68, 44, 0.05) 1000%, rgba(135, 207, 235, 0) 5000%);
+    transition: opacity 2s linear;
 }
-.cdark{
+.changeTheme{
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
+    transition: all 2s linear;
+    /* visibility: hidden; */
+    /* background-color: rgba(255, 255, 255, 0.2); */
 }
 nav{
     position: relative;
@@ -45,7 +56,7 @@ nav h1#title{
     float: left;
     font-size: 7vw;
     margin-top: 15px;
-    transition: all .1s ease-in-out;
+    transition: all .05s ease-out;
 }
 #menuicon{
     width: 10%;
@@ -69,7 +80,6 @@ nav h1#title{
     background-color: rgba(6, 6, 6, 0);
     text-align: center;
     line-height: 3vh;
-    transition: display 1s ease-in-out;
 }
 @keyframes menuIn {
     from{
@@ -80,8 +90,9 @@ nav h1#title{
     }
 }
 @keyframes menuOut{
-    from{transform: translateX(-5.6%);display: flex;}
-    to{transform: translateX(-120%);display: none;}
+    
+    from{margin-top: 1vh;display: flex;}
+    to{margin-top: 0;display: none;}
 
 }
 .menuitem svg{
@@ -100,10 +111,8 @@ nav h1#title{
     border-radius: 2vw;
     cursor: pointer;
 }
-#close{
+.menuitem:last-child{
     background: none;
-    width: 1vw;
-    padding: 0;
 }
 main,nav{
     margin: auto;
@@ -121,7 +130,7 @@ main,nav{
 #birthTicker div{
     padding: 2vh 2vw;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
 #birthTicker div#mili{
@@ -138,19 +147,112 @@ main,nav{
     font-size: 5vw;
     margin: auto;
     text-align: center;
+    /* opacity: 0; */
+    transition-property: all;
 }
 
+.about,.themes,.settings{
+    /* display: none; */
+    visibility: hidden;
+    /* opacity: 0; */
+    position: absolute;
+    top: 135%;
+    left: 0%;
+    width: 90vw;
+    height: 70vh;
+    padding: 1vh 1vw;
+    font-size: 4.3vw;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 20px solid transparent;
+    border-radius: 10px;
+    overflow: auto;
+    scrollbar-width: none;
+    text-align: center;
+    list-style-position: inside;
+    /* transition: all 0.1s ease; */
+    /* animation: aboutOut 2s; */
+}
 
+@keyframes aboutIn {
+    from {
+        height: 7vh;
+        top:90%
+    }
+    to{
+        height: 70vh;
+        top: 135%;
+    }
+}
+@keyframes aboutOut{
+    from {
+    }
+    to{
+        height: 0vh;
+        visibility: hidden;
+        top: 120%;
+    }
+}
+.about *,.settings *{
+    margin: 15px 0;
+}
+.themes{
+    /* visibility: visible; */
+    display: grid;
+    justify-content: center;
+    font-size: 6vw;
+}
+.themes div{
+    width: 76vw;
+}
+.themes div input{
+    min-width: 8vw;
+    min-height: 8vh;
+}
+.themes hr{width:40vw;height: 1px;margin-top: 5px;opacity: .3;margin: auto;}
+.settings{
+    font-size: 5vw;
+    /* visibility: visible; */
+}
+.settings button{
+    border : none;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.974),-1px -.5px 5px rgba(0, 0, 0, 0);
+    /* color: black; */
+    background-color: #001d74ff;
+    width: 50%;
+    height: 10%;
+    font-size: xx-large;
+    font-weight: 900;
+    cursor: pointer;
+    margin-top: 18vh;
+}
+.settings button:hover{background-color: #43003C;}
 
+.settings button:active{
+    transform: translate(1px,2px);
+    background-color: #100070;
+}
+#closeOption{
+    visibility: hidden;
+    position: absolute;
+    /* top: 88vh; */
+    left: 42vw;
+    bottom: -82vh;
+    text-align: center;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+/* .gred2{
+    background-image:radial-gradient(closest-side at 40% 40% , rgba(35, 115, 227, 0.762),rgba(102, 82, 255, 0.318));
+}
+body{
+    background-image:linear-gradient(to top left,#ce0d37 1%,#7642b5 15%,#6b54ef 28%,#574e72 49%,#6048f9 67%,#b65151 84%);
+}
+.gred1{
+    background-image:linear-gradient(60deg,#0008ff96 10%,#3061ff15 50%);
+}
+.gred3{
+    background-image:radial-gradient( closest-side at 95% 4%, rgba(36, 171, 255, 0.622) 30%, rgba(189, 68, 44, 0) 1000%, rgba(55, 180, 253, 0.319) 5000%);
+}
+.changeTheme{
+    background-color: rgba(255, 255, 255, 0.0);
+} */

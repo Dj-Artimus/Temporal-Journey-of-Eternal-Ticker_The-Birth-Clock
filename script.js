@@ -67,17 +67,158 @@ document.getElementById("birthTicker").innerHTML = `
 }
 
 document.getElementById("menuicon").addEventListener("click",() => {
+    document.getElementsByClassName("menu")[0].style.animation="menuIn 0.1s ease";
     document.getElementsByClassName("menu")[0].style.display="flex";
-    document.getElementsByClassName("menu")[0].style.animation="menuIn 0.5s ease";
     document.getElementById("menuicon").style.visibility="hidden";
+    document.getElementById("title").style.transitionDelay="0s";
+    document.getElementById("title").style.color="transparent";
     document.getElementById("title").style.visibility="hidden";
     
 });
 document.getElementById("close").addEventListener("click",() => {
-    document.getElementsByClassName("menu")[0].style.animation="menuOut 0.5s ease-in";
+    document.getElementsByClassName("menu")[0].style.animation="menuOut 0.1s ease-out";
     document.getElementsByClassName("menu")[0].style.display="none";
     document.getElementById("menuicon").style.visibility="visible";
+    document.getElementById("title").style.transitionDelay=".1s";
+    document.getElementById("title").style.color="";
     document.getElementById("title").style.visibility="visible";
+    document.getElementsByClassName("clock")[0].style.visibility="visible";
+    document.getElementById("birthTicker").style.visibility="visible";
+    document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("about")[0].style.visibility="hidden";
+    document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.visibility="hidden";
+    document.getElementsByClassName("settings")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("settings")[0].style.visibility="hidden";
+    document.getElementById("closeOption").style.visibility="hidden";
+});
+
+document.getElementById("about").addEventListener("click",() => {
+    document.getElementsByClassName("clock")[0].style.visibility="hidden";
+    document.getElementById("birthTicker").style.visibility="hidden";
+    document.getElementsByClassName("about")[0].style.animation="aboutIn 1s";
+    document.getElementsByClassName("about")[0].style.visibility="visible";
+    document.getElementById("closeOption").style.visibility="visible";
+    document.getElementsByClassName("clock")[0].style.transitionDelay=".15s";
+    document.getElementById("birthTicker").style.transitionDelay=".05s";
+    document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.visibility="hidden";
+    document.getElementsByClassName("settings")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("settings")[0].style.visibility="hidden";
+});
+document.getElementById("theme").addEventListener("click",() => {
+    document.getElementsByClassName("clock")[0].style.visibility="hidden";
+    document.getElementById("birthTicker").style.visibility="hidden";
+    document.getElementsByClassName("themes")[0].style.animation="aboutIn 1s";
+    document.getElementsByClassName("themes")[0].style.visibility="visible";
+    document.getElementById("closeOption").style.visibility="visible";
+    document.getElementsByClassName("clock")[0].style.transitionDelay=".15s";
+    document.getElementById("birthTicker").style.transitionDelay=".05s";
+    document.getElementsByClassName("about")[0].style.visibility="hidden";
+    document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("settings")[0].style.visibility="hidden";
+    document.getElementsByClassName("settings")[0].style.animation="aboutOut .5s ease-in both";
+});
+document.getElementById("setting").addEventListener("click",() => {
+    document.getElementsByClassName("clock")[0].style.visibility="hidden";
+    document.getElementById("birthTicker").style.visibility="hidden";
+    document.getElementsByClassName("settings")[0].style.animation="aboutIn 1s";
+    document.getElementsByClassName("settings")[0].style.visibility="visible";
+    document.getElementById("closeOption").style.visibility="visible";
+    document.getElementsByClassName("clock")[0].style.transitionDelay=".15s";
+    document.getElementById("birthTicker").style.transitionDelay=".05s";
+    document.getElementsByClassName("about")[0].style.visibility="hidden";
+    document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.visibility="hidden";
+});
+
+document.getElementById("closeOption").addEventListener("click",() => {
+    document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("settings")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementById("closeOption").style.visibility="hidden";
+    document.getElementById("birthTicker").style.transitionDelay=".5s";
+    document.getElementById("birthTicker").style.visibility="visible";
+    document.getElementsByClassName("clock")[0].style.transitionDelay=".4s";
+    document.getElementsByClassName("clock")[0].style.visibility="visible";
+});
+
+document.getElementById("blackTheme").addEventListener("click",() => {
+    document.getElementsByClassName("changeTheme")[0].style.backgroundColor="black";
+    document.body.style.filter="invert(0)";
+    document.getElementById("black").checked=true;
+    let b = document.body.style;
+    let g1 = document.getElementsByClassName("gred1")[0].style;
+    let g2 = document.getElementsByClassName("gred2")[0].style;
+    let g3 = document.getElementsByClassName("gred3")[0].style;
+    
+    setTimeout(() => {
+        b.backgroundImage = "linear-gradient(to top left,#43003C 1%,#2E0068 15%,#100070 28%,#120147 49%,#140C48 67%,#060123 84%)";
+        g1.backgroundImage = "linear-gradient(60deg,#09e1e162 10%,#17005800 50%)";
+        g2.backgroundImage = "radial-gradient(closest-side at 40% 40% , rgba(2, 3, 49, 0.8),rgba(20, 20, 221, 0.149))";
+        g3.backgroundImage = "radial-gradient( closest-side at 95% 4%, rgba(2, 76, 146, 0.845) 30%, rgba(189, 68, 44, 0.05) 1000%, rgba(135, 207, 235, 0) 5000%)";
+    }, 1000); 
+});
+document.getElementById("whiteTheme").addEventListener("click",() => {
+    document.getElementsByClassName("changeTheme")[0].style.backgroundColor="black";
+    document.body.style.filter="invert(1)";
+    document.getElementById("white").checked=true;
+    
+});
+
+document.getElementById("dayTheme").addEventListener("click",() => {
+    let b = document.body.style;
+    let g1 = document.getElementsByClassName("gred1")[0].style;
+    let g2 = document.getElementsByClassName("gred2")[0].style;
+    let g3 = document.getElementsByClassName("gred3")[0].style;
+    
+    b.filter="invert(0)";
+    document.getElementsByClassName("changeTheme")[0].style.backgroundColor="";
+    g1.opacity="0";
+    g2.opacity="0";
+    g3.opacity="0";
+    setTimeout(()=>{
+        g1.backgroundImage="linear-gradient(60deg,#0008ff96 10%,#3061ff15 50%)";
+        g2.backgroundImage="radial-gradient(closest-side at 40% 40% , rgba(35, 115, 227, 0.762),rgba(102, 82, 255, 0.318))";
+        g3.backgroundImage="radial-gradient( closest-side at 95% 4%, rgba(36, 171, 255, 0.622) 30%, rgba(189, 68, 44, 0) 1000%, rgba(55, 180, 253, 0.319) 5000%)";
+        b.backgroundImage="linear-gradient(to top left,#ce0d37 1%,#7642b5 15%,#6b54ef 28%,#574e72 49%,#6048f9 67%,#b65151 84%)";
+        b.opacity="0"
+        g1.opacity="1";
+        g2.opacity="1";
+        g3.opacity="1";
+        b.opacity="1";
+    },1000);
+    document.getElementById("day").checked=true;
+    
+});
+
+document.getElementById("nightTheme").addEventListener("click",() => {
+    let b = document.body.style;
+    let g1 = document.getElementsByClassName("gred1")[0].style;
+    let g2 = document.getElementsByClassName("gred2")[0].style;
+    let g3 = document.getElementsByClassName("gred3")[0].style;
+    
+    b.filter="invert(0)";
+    document.getElementsByClassName("changeTheme")[0].style.backgroundColor="";
+    document.getElementById("night").checked=true;
+    
+    g1.opacity="0";
+    g2.opacity="0";
+    g3.opacity="0";
+    b.opacity="0"
+    setTimeout(() => {
+        b.backgroundImage = "linear-gradient(to top left,#43003C 1%,#2E0068 15%,#100070 28%,#120147 49%,#140C48 67%,#060123 84%)";
+        g1.backgroundImage = "linear-gradient(60deg,#09e1e162 10%,#17005800 50%)";
+        g2.backgroundImage = "radial-gradient(closest-side at 40% 40% , rgba(2, 3, 49, 0.8),rgba(20, 20, 221, 0.149))";
+        g3.backgroundImage = "radial-gradient( closest-side at 95% 4%, rgba(2, 76, 146, 0.845) 30%, rgba(189, 68, 44, 0.05) 1000%, rgba(135, 207, 235, 0) 5000%)";
+        
+        b.opacity="1";
+        g1.opacity="1";
+        g2.opacity="1";
+        g3.opacity="1";
+    }, 1000);
+
 });
 
 function leadingZero(n){
