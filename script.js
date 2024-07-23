@@ -7,8 +7,15 @@ document.getElementById("date").innerHTML = date ;
 birth();
 },1)
 
+
+var y = 2002;
+var m = 5;
+var d = 1;
+var hr = 0;
+var min = 30;
+
 function birth(){
-    const birth = new Date(2002,5,1,0,30,49);
+    const birth = new Date(y,m,d,hr,min,49);
     const now = new Date();
 
     const ageInMilliseconds = now - birth;
@@ -46,13 +53,13 @@ function birth(){
     // seconds = leadingZero(seconds);
 
 document.getElementById("birthTicker").innerHTML = `
-<div style="grid-area:1 / 1 / span 1 / span 1"><h2>${years}</h2><p>YEARS</p></div>
-<div style="grid-area:1 / 2 / span 1 / span 1"><h2>${months}</h2><p>MONTHS</p></div>
-<div style="grid-area:1 / 3 / span 1 / span 1"><h2>${days}</h2><p>DAYS</p></div>
-<div style="grid-area:2 / 1 / span 1 / span 1"><h2>${hours}</h2><p>HOURS</p></div>
-<div style="grid-area:2 / 2 / span 1 / span 1"><h2>${minutes}</h2><p>MINUTES</p></div>
-<div style="grid-area:2 / 3 / span 1 / span 1"><h2>${seconds}</h2><p>SECONDS</p></div>
-<div id="mili" style="grid-area:3 / 2 / span 1 / span 1"><h2>${Math.floor(miliseconds/100)}</h2><p>MILI</p></div>`;
+<div><h2>${years}</h2><p>YEARS</p></div>
+<div><h2>${months}</h2><p>MONTHS</p></div>
+<div><h2>${days}</h2><p>DAYS</p></div>
+<div><h2>${hours}</h2><p>HOURS</p></div>
+<div><h2>${minutes}</h2><p>MINUTES</p></div>
+<div><h2>${seconds}</h2><p>SECONDS</p></div>
+<div id="mili"><h2>${Math.floor(miliseconds/100)}</h2><p>MILI</p></div>`;
 
 
 // document.getElementById("birthTicker").innerHTML = `
@@ -70,27 +77,33 @@ document.getElementById("menuicon").addEventListener("click",() => {
     document.getElementsByClassName("menu")[0].style.animation="menuIn 0.1s ease";
     document.getElementsByClassName("menu")[0].style.display="flex";
     document.getElementById("menuicon").style.visibility="hidden";
+    document.getElementById("menuClose").style.visibility="visible";
     document.getElementById("title").style.transitionDelay="0s";
     document.getElementById("title").style.color="transparent";
     document.getElementById("title").style.visibility="hidden";
     
 });
-document.getElementById("close").addEventListener("click",() => {
+document.getElementById("menuClose").addEventListener("click",() => {
+    document.getElementById("menuClose").style.visibility="hidden";
     document.getElementsByClassName("menu")[0].style.animation="menuOut 0.1s ease-out";
     document.getElementsByClassName("menu")[0].style.display="none";
     document.getElementById("menuicon").style.visibility="visible";
     document.getElementById("title").style.transitionDelay=".1s";
     document.getElementById("title").style.color="";
     document.getElementById("title").style.visibility="visible";
+    document.getElementsByClassName("clock")[0].style.transitionDelay=".4s";
+    document.getElementById("birthTicker").style.transitionDelay=".5s";
     document.getElementsByClassName("clock")[0].style.visibility="visible";
     document.getElementById("birthTicker").style.visibility="visible";
     document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("about")[0].style.visibility="hidden";
     document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("themes")[0].style.visibility="hidden";
-    document.getElementsByClassName("settings")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("settings")[0].style.visibility="hidden";
+    document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
     document.getElementById("closeOption").style.visibility="hidden";
+    document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
+    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
+
+
 });
 
 document.getElementById("about").addEventListener("click",() => {
@@ -103,8 +116,16 @@ document.getElementById("about").addEventListener("click",() => {
     document.getElementById("birthTicker").style.transitionDelay=".05s";
     document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
     document.getElementsByClassName("themes")[0].style.visibility="hidden";
-    document.getElementsByClassName("settings")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("settings")[0].style.visibility="hidden";
+    document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("profile")[0].style.visibility="hidden";
+    document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
+    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
+    document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
+
+
+    setTimeout(smoothScroll(),5000);
+
 });
 document.getElementById("theme").addEventListener("click",() => {
     document.getElementsByClassName("clock")[0].style.visibility="hidden";
@@ -116,32 +137,45 @@ document.getElementById("theme").addEventListener("click",() => {
     document.getElementById("birthTicker").style.transitionDelay=".05s";
     document.getElementsByClassName("about")[0].style.visibility="hidden";
     document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("settings")[0].style.visibility="hidden";
-    document.getElementsByClassName("settings")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("profile")[0].style.visibility="hidden";
+    document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
+    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
+    document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
+
+
 });
-document.getElementById("setting").addEventListener("click",() => {
+document.getElementById("profile").addEventListener("click",() => {
     document.getElementsByClassName("clock")[0].style.visibility="hidden";
     document.getElementById("birthTicker").style.visibility="hidden";
-    document.getElementsByClassName("settings")[0].style.animation="aboutIn 1s";
-    document.getElementsByClassName("settings")[0].style.visibility="visible";
+    document.getElementsByClassName("profile")[0].style.animation="aboutIn 1s";
+    document.getElementsByClassName("profile")[0].style.visibility="visible";
     document.getElementById("closeOption").style.visibility="visible";
+    document.getElementById("setUpBtn").style.animation="setUpIn 1.3s linear forwards";
+    document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
     document.getElementsByClassName("clock")[0].style.transitionDelay=".15s";
     document.getElementById("birthTicker").style.transitionDelay=".05s";
-    document.getElementsByClassName("about")[0].style.visibility="hidden";
     document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("about")[0].style.visibility="hidden";
     document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
     document.getElementsByClassName("themes")[0].style.visibility="hidden";
+    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
 });
 
 document.getElementById("closeOption").addEventListener("click",() => {
     document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
     document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("settings")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
     document.getElementById("closeOption").style.visibility="hidden";
     document.getElementById("birthTicker").style.transitionDelay=".5s";
     document.getElementById("birthTicker").style.visibility="visible";
     document.getElementsByClassName("clock")[0].style.transitionDelay=".4s";
     document.getElementsByClassName("clock")[0].style.visibility="visible";
+    document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
+    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
 });
 
 document.getElementById("blackTheme").addEventListener("click",() => {
@@ -225,3 +259,111 @@ function leadingZero(n){
     let num = n >= 0 && n <=9 ? "0" + n:n;
     return num;
 }
+
+let setUpBtn = document.getElementById("setUpBtn");
+let setupForm = document.getElementsByClassName("setupForm")[0] ;
+let profile = document.getElementsByClassName("profile")[0];
+
+setUpBtn.addEventListener("click", form);
+function form () {
+  document.getElementsByClassName("setupForm")[0].style.animation="aboutIn 1s";
+  setupForm.style.visibility="visible";
+  document.getElementById("setBtn").style.animation="setUpIn 1.3s linear forwards";
+  document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
+  document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
+  profile.style.visibility="hidden";
+}
+
+
+let set = document.getElementById("setForm") ;
+set.addEventListener("submit",(e) => {
+  e.preventDefault();
+  let name = set.elements[0].value;
+  let dob = set.elements[1].value;;
+  let tob = set.elements[2].value;
+  localStorage.setItem("name",name+"="+dob+"="+tob)
+  setupForm.style.visibility="hidden";
+  checkProfile();
+  profile.style.visibility="visible";
+  document.getElementsByClassName("profile")[0].style.animation="aboutIn 1s";
+  document.getElementById("setUpBtn").style.animation="setUpIn 1.3s linear forwards";
+});
+
+// localStorage.clear();
+function checkProfile(){
+  let checkProfile = localStorage.getItem("name");
+  if(checkProfile){
+    let profile = document.getElementsByClassName("profileInfo")[0];
+    let editBtn = document.getElementById("setUpBtn");
+    let profileInfo = checkProfile.split("=");
+    let name = profileInfo[0];
+    let dob = profileInfo[1];
+    let tob = profileInfo[2];
+    profile.innerHTML = 
+    `<h1>Hey ${name} !</h1>
+    <h4>Your Date of Birth is<h4>
+    <h3> ${dob} </h3>
+    <h4>Your Time of Birth is<h4>
+    <h3> ${tob} </h3>
+    <h4><strong>Thank you</strong> for using <br> <strong>The Birth Clock.</  strong></h4>
+    <h4>&copy Dj Artimus.</h4>`; 
+    editBtn.innerHTML = "Edit";
+    dob = dob.split("-");
+    y = Number(dob[0]);
+    m = Number(dob[1]-1);
+    d = Number(dob[2]);
+
+    tob = tob.split(":");
+    hr = Number(tob[0]);
+    min = Number(tob[1]);
+  }
+}
+checkProfile();
+
+
+// let isUserScrolling = false;
+// let scrollAmount = 0;
+// const scrollStep = 1; // Adjust this value for faster/slower scrolling
+// const scrollInterval = 30; // Adjust this value for smoother/less smooth scrolling
+// let scrollTimeout;
+
+// function smoothScroll() {
+//   const div = document.getElementsByClassName('about')[0];
+
+//   function scrollContent() {
+//     if (!isUserScrolling) {
+//       if (scrollAmount < div.scrollHeight - div.clientHeight) {
+//         scrollAmount += scrollStep;
+//         div.scrollTop = scrollAmount;
+//       } else {
+//         scrollAmount = 0; // Reset to top when reaching the bottom
+//       }
+//     }
+//   }
+
+//   setInterval(scrollContent, scrollInterval);
+
+//   div.addEventListener('scroll', () => {
+//     isUserScrolling = true;
+//     clearTimeout(scrollTimeout);
+//     scrollTimeout = setTimeout(() => {
+//       isUserScrolling = false;
+//     }, 1); // Adjust the timeout duration as needed
+//   });
+
+//   div.addEventListener('wheel', () => {
+//     isUserScrolling = true;
+//     clearTimeout(scrollTimeout);
+//     scrollTimeout = setTimeout(() => {
+//       isUserScrolling = false;
+//     }, 2000); // Adjust the timeout duration as needed
+//   });
+
+//   div.addEventListener('touchmove', () => {
+//     isUserScrolling = true;
+//     clearTimeout(scrollTimeout);
+//     scrollTimeout = setTimeout(() => {
+//       isUserScrolling = false;
+//     }, 2000); // Adjust the timeout duration as needed
+//   });
+// }

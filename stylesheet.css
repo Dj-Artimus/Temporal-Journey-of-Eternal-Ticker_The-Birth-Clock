@@ -52,34 +52,35 @@ nav{
     display: table;
 }
 nav h1#title{
+    /* visibility: hidden; */
+    /* display: none; */
     width: 90%;
     float: left;
-    font-size: 7vw;
+    font-size: min(7vw,40px);
     margin-top: 15px;
     transition: all .05s ease-out;
 }
+.menuTriggers{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 4vh;
+}
 #menuicon{
-    width: 10%;
+    width: 100%;
     float: right;
     position: absolute;
-    top: 20%;
-    right: 1vw;
     cursor: pointer;
 }
 .menu{
     display: none;
-    justify-content: space-around;
-    align-items: center;
     position: absolute;
-    margin-top: 1vh;
-    transform: translateX(-5.6%);
-    width: 98vw;
-    height: fit-content;
-    padding: 1vh 1vw 1vh 6vw;
+    top: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 10px;
     background-color: rgba(6, 6, 6, 0);
-    text-align: center;
-    line-height: 3vh;
 }
 @keyframes menuIn {
     from{
@@ -98,21 +99,29 @@ nav h1#title{
 .menuitem svg{
     display: inline-block;
     fill: rgba(255, 255, 255, 0.8);
-    width: 10vw;
+    width: min(10vw,60px);
     opacity: 0.9;
 }
 .menuitem h4{
-    font-size: 3.3vw;
+    font-size: min(3.3vw,19px);
+    margin-top: 5px;
 }
 .menuitem{
+    display: inline-block;
+    margin: auto min(10px,2vw);
     background-color: rgba(255, 255, 255, 0.1);
-    padding: 2vw;
-    min-width: 20vw;
-    border-radius: 2vw;
+    padding: min(2vw,15px) 0;
+    width: min(17.8vw,100px);
+    border-radius: min(2vw,15px);
     cursor: pointer;
+    text-align: center;
 }
-.menuitem:last-child{
-    background: none;
+#menuClose{
+    visibility: hidden;
+    fill: white;
+    width:min(7vw,35px);
+    position:absolute;
+    left: 30%;
 }
 main,nav{
     margin: auto;
@@ -122,57 +131,73 @@ main,nav{
 
 #birthTicker{
     display: grid;
-    grid-template-columns: 1.05fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: center;
-    gap: 10px;
+    gap: max(10px,2vw);
     margin: 4vh auto;
 }
 #birthTicker div{
+    /* display: none; */
     padding: 2vh 2vw;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    border-radius: min(18px,2.5vw);
 }
 #birthTicker div#mili{
     display: none;
 }
 #birthTicker h2{
-    font-size: 16vw;
+    font-size: 20vw;
 }
 #birthTicker p{
     font-size: 5vw;
     font-weight: 900;
 }
 .clock{
-    font-size: 5vw;
+    /* display: none; */
+    font-size: min(5vw,35px);
     margin: auto;
     text-align: center;
-    /* opacity: 0; */
     transition-property: all;
 }
-
-.about,.themes,.settings{
-    /* display: none; */
+.about,.themes,.profile,.setupForm{
     visibility: hidden;
-    /* opacity: 0; */
     position: absolute;
     top: 135%;
-    left: 0%;
-    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(80vw,600px);
     height: 70vh;
     padding: 1vh 1vw;
-    font-size: 4.3vw;
+    font-size: min(5vw,23.5px);
     background-color: rgba(255, 255, 255, 0.05);
     border: 20px solid transparent;
     border-radius: 10px;
-    overflow: auto;
+    overflow-y: auto;
     scrollbar-width: none;
     text-align: center;
     list-style-position: inside;
-    /* transition: all 0.1s ease; */
-    /* animation: aboutOut 2s; */
 }
 
+.setupForm form *{
+    margin: auto;
+    font-size: min(5vw,25px);
+    text-align: center;
+    display: block;
+    color: white;
+    width: min(100%,400px);
+    height: min(6vh,40px);
+    border-radius: min(3vw,10px);
+    padding: min(1vh,4px) min(5vw,20px);
+    border: none;
+}
+.setupForm label{
+    font-size: min(6vw,30px);
+    margin: 15px auto 10px;
+}
+.setupForm input{
+    background-color: rgba(255, 255, 255, .1);
+}
 @keyframes aboutIn {
     from {
         height: 7vh;
@@ -192,52 +217,65 @@ main,nav{
         top: 120%;
     }
 }
-.about *,.settings *{
+.about *,.profile *{
     margin: 15px 0;
 }
 .themes{
     /* visibility: visible; */
     display: grid;
     justify-content: center;
-    font-size: 6vw;
+    font-size: min(5vw,30px);
 }
 .themes div{
     width: 76vw;
 }
 .themes div input{
-    min-width: 8vw;
-    min-height: 8vh;
+    min-width: min(8vw,36px);
+    min-height: min(8vh,36px);
+    margin-top: min(.5vh,10px);
 }
-.themes hr{width:40vw;height: 1px;margin-top: 5px;opacity: .3;margin: auto;}
-.settings{
-    font-size: 5vw;
+.themes hr{width:min(40vw,250px);height: 1px;margin-top: 5px;opacity: .3;margin: auto;}
+.profile .profileInfo{
+    font-size: min(5vw,25px);
     /* visibility: visible; */
 }
-.settings button{
+.profile button,#setBtn{
+    /* visibility: visible; */
     border : none;
     border-radius: 5px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.974),-1px -.5px 5px rgba(0, 0, 0, 0);
-    /* color: black; */
     background-color: #001d74ff;
-    width: 50%;
-    height: 10%;
-    font-size: xx-large;
+    width: min(50%,200px);
+    height: min(10vw,50px);
+    font-size: min(6vw,30px);
     font-weight: 900;
     cursor: pointer;
-    margin-top: 18vh;
+    position: relative;
+    margin: 5vh auto 0;
 }
-.settings button:hover{background-color: #43003C;}
+@keyframes setUpIn {
+    0%,80%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes setUpOut {
+    0%{opacity: 1;}
+    10%,100%{opacity: 0;}
+}
+.profile button:hover,#setBtn:hover{background-color: #43003C;}
 
-.settings button:active{
-    transform: translate(1px,2px);
+.profile button:active,#setBtn:active{
+    transform: translate(2px,3px);
     background-color: #100070;
 }
 #closeOption{
     visibility: hidden;
     position: absolute;
     /* top: 88vh; */
-    left: 42vw;
-    bottom: -82vh;
+    left: 50%;
+    width:min(7vw,35px);
+    margin-right:-25vw;
+    transform: translateX(-50%);
+    bottom: -83vh;
     text-align: center;
 }
 
@@ -256,3 +294,172 @@ body{
 .changeTheme{
     background-color: rgba(255, 255, 255, 0.0);
 } */
+@media screen and (min-width:600px) {
+    #menuicon{
+        width: 60px;
+    }
+    #birthTicker{
+        width: 0;
+    }
+    #birthTicker h2{
+        font-size: 18vw;
+    } 
+    #birthTicker div{
+        padding: min(2vh,8px) 10px min(2vh,16px);
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: max(8px,2vw);
+        width: 24vw;
+    }
+}
+@media screen and (orientation:landscape) and (min-width:1000px) and (min-height:500px) {
+    .about,.themes,.profile,.setupForm{
+        top:150%;
+    }
+    @keyframes aboutIn {
+        from {
+            height: 7vh;
+            top:90%
+        }
+        to{
+            height: 70vh;
+            top: 150%;
+        }
+    }
+}
+@media screen and (min-width:1000px){
+    #menuicon{
+        width: 60px;
+    }
+    #menuClose{
+        left: 45%;
+    }
+    .about,.themes,.profile,.setupForm{
+        left:50%;
+    }
+    #birthTicker{
+        display: flex;
+        width: auto;
+    }
+    #birthTicker div{
+        padding: min(2vh,8px) 0 min(2vh,16px);
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: max(8px,1vw);
+        width: 25vw;
+    }
+    #birthTicker h2{
+        font-size: 9vw;
+    }
+    #birthTicker p{
+        font-size: 2vw;
+    }    
+    #birthTicker div#mili{
+        display: inline-block;
+        display: none;
+    }
+}
+@media screen and (orientation:landscape) and (max-width:1000px){
+    nav h1#title{
+        font-size: 4vw;
+    }
+    body{
+        overflow: hidden;
+    }
+    #menuicon{
+        width: 5vw;
+        height: 4vw;
+    }
+    .menuitem svg{width: 4vw;}
+    .menuitem{
+        width: 8vw;
+        padding: 1vw 0;
+        border-radius: 1vw;
+    }
+    .menuitem h4{font-size: 1.5vw;margin-top: 2px;}
+    #menuClose{
+        width: 3.5vw;
+        left: 45%;
+    }
+    .about,.themes,.profile,.setupForm{
+        height: 55vh;
+        left:50%;
+        font-size: 2.5vw;
+        top: 115%;
+    }
+    .profile .profileInfo{
+        font-size: 2.5vw;
+    }
+
+    .setupForm{
+        text-align: center;
+    }
+    .setupForm label{
+        width: 45%;
+        margin: 6vh 0;
+        display: inline-block;
+        font-size: 3vw;
+    }
+    .setupForm input{
+        height: 10vh;
+        width: 50%;
+        display: inline-block;
+    }
+    .profile button, #setBtn{
+        display: block;
+        font-size: 2vw;
+        width: 20%;
+        height: 20%;
+    }
+    .themes{font-size: 2.5vw;}
+    .themes div input{
+        min-width: 3vw;
+        min-height: 3vw;
+        margin-top: 3vh;
+    }
+    .themes hr{width:15vw;height: 1px;opacity: .3;margin: auto;}
+    #birthTicker{
+        display: flex;
+        width: auto;
+    }
+    #birthTicker div{
+        padding: min(2vh,8px) 0 min(2vh,16px);
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 1.5vw;
+        width: 25vw;
+    }
+    #birthTicker h2{
+        font-size: 6vw;
+    }
+    #birthTicker p{
+        font-size: 1.8vw;
+    }    
+    #birthTicker div#mili{
+        display: inline-block;
+        display: none;
+    }
+    .clock{
+        font-size: 2vw;
+    }
+    #closeOption{
+        width: 3.5vw;
+        bottom: -72vh;
+    }
+    @keyframes aboutIn {
+        from {
+            height: 7vh;
+            top:90%
+        }
+        to{
+            height: 55vh;
+            top: 115%;
+        }
+    }
+    @keyframes aboutOut{
+        from {
+        }
+        to{
+            height: 0vh;
+            visibility: hidden;
+            top: 100%;
+        }
+    }
+}
