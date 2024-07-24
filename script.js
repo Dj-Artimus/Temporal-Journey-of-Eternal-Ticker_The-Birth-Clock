@@ -95,12 +95,12 @@ document.getElementById("menuClose").addEventListener("click",() => {
     document.getElementById("birthTicker").style.transitionDelay=".5s";
     document.getElementsByClassName("clock")[0].style.visibility="visible";
     document.getElementById("birthTicker").style.visibility="visible";
-    document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("about")[0].style.animation="optionsInfoOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.animation="optionsInfoOut .5s ease-in both";
+    document.getElementsByClassName("profile")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementById("closeOption").style.visibility="hidden";
     document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
-    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
 
 
@@ -109,17 +109,17 @@ document.getElementById("menuClose").addEventListener("click",() => {
 document.getElementById("about").addEventListener("click",() => {
     document.getElementsByClassName("clock")[0].style.visibility="hidden";
     document.getElementById("birthTicker").style.visibility="hidden";
-    document.getElementsByClassName("about")[0].style.animation="aboutIn 1s";
+    document.getElementsByClassName("about")[0].style.animation="optionsInfoIn 1s";
     document.getElementsByClassName("about")[0].style.visibility="visible";
     document.getElementById("closeOption").style.visibility="visible";
     document.getElementsByClassName("clock")[0].style.transitionDelay=".15s";
     document.getElementById("birthTicker").style.transitionDelay=".05s";
-    document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("themes")[0].style.visibility="hidden";
-    document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("profile")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("profile")[0].style.visibility="hidden";
     document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
-    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
 
@@ -130,17 +130,17 @@ document.getElementById("about").addEventListener("click",() => {
 document.getElementById("theme").addEventListener("click",() => {
     document.getElementsByClassName("clock")[0].style.visibility="hidden";
     document.getElementById("birthTicker").style.visibility="hidden";
-    document.getElementsByClassName("themes")[0].style.animation="aboutIn 1s";
+    document.getElementsByClassName("themes")[0].style.animation="optionsInfoIn 1s";
     document.getElementsByClassName("themes")[0].style.visibility="visible";
     document.getElementById("closeOption").style.visibility="visible";
     document.getElementsByClassName("clock")[0].style.transitionDelay=".15s";
     document.getElementById("birthTicker").style.transitionDelay=".05s";
     document.getElementsByClassName("about")[0].style.visibility="hidden";
-    document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("about")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("profile")[0].style.visibility="hidden";
-    document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("profile")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
-    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
 
@@ -149,32 +149,32 @@ document.getElementById("theme").addEventListener("click",() => {
 document.getElementById("profile").addEventListener("click",() => {
     document.getElementsByClassName("clock")[0].style.visibility="hidden";
     document.getElementById("birthTicker").style.visibility="hidden";
-    document.getElementsByClassName("profile")[0].style.animation="aboutIn 1s";
+    document.getElementsByClassName("profile")[0].style.animation="optionsInfoIn 1s";
     document.getElementsByClassName("profile")[0].style.visibility="visible";
     document.getElementById("closeOption").style.visibility="visible";
     document.getElementById("setUpBtn").style.animation="setUpIn 1.3s linear forwards";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
     document.getElementsByClassName("clock")[0].style.transitionDelay=".15s";
     document.getElementById("birthTicker").style.transitionDelay=".05s";
-    document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("about")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("about")[0].style.visibility="hidden";
-    document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("themes")[0].style.visibility="hidden";
-    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
 });
 
 document.getElementById("closeOption").addEventListener("click",() => {
-    document.getElementsByClassName("about")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("themes")[0].style.animation="aboutOut .5s ease-in both";
-    document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("about")[0].style.animation="optionsInfoOut .5s ease-in both";
+    document.getElementsByClassName("themes")[0].style.animation="optionsInfoOut .5s ease-in both";
+    document.getElementsByClassName("profile")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementById("closeOption").style.visibility="hidden";
     document.getElementById("birthTicker").style.transitionDelay=".5s";
     document.getElementById("birthTicker").style.visibility="visible";
     document.getElementsByClassName("clock")[0].style.transitionDelay=".4s";
     document.getElementsByClassName("clock")[0].style.visibility="visible";
     document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
-    document.getElementsByClassName("setupForm")[0].style.animation="aboutOut .5s ease-in both";
+    document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
 });
 
@@ -263,13 +263,20 @@ function leadingZero(n){
 let setUpBtn = document.getElementById("setUpBtn");
 let setupForm = document.getElementsByClassName("setupForm")[0] ;
 let profile = document.getElementsByClassName("profile")[0];
+let setAlert = document.getElementById("set");
 
 setUpBtn.addEventListener("click", form);
+setAlert.addEventListener("click", form);
+
 function form () {
-  document.getElementsByClassName("setupForm")[0].style.animation="aboutIn 1s";
+    document.getElementsByClassName("clock")[0].style.visibility="hidden";
+    document.getElementById("birthTicker").style.visibility="hidden";  
+    document.getElementById("closeOption").style.visibility="visible";
+    document.getElementsByClassName("profileSetupMsg")[0].style.top="-100%"
+  document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoIn 1s";
   setupForm.style.visibility="visible";
   document.getElementById("setBtn").style.animation="setUpIn 1.3s linear forwards";
-  document.getElementsByClassName("profile")[0].style.animation="aboutOut .5s ease-in both";
+  document.getElementsByClassName("profile")[0].style.animation="optionsInfoOut .5s ease-in both";
   document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
   profile.style.visibility="hidden";
 }
@@ -285,8 +292,13 @@ set.addEventListener("submit",(e) => {
   setupForm.style.visibility="hidden";
   checkProfile();
   profile.style.visibility="visible";
-  document.getElementsByClassName("profile")[0].style.animation="aboutIn 1s";
+  document.getElementsByClassName("profile")[0].style.animation="optionsInfoIn 1s";
   document.getElementById("setUpBtn").style.animation="setUpIn 1.3s linear forwards";
+});
+
+let closeMsg = document.getElementById("closeMsg");
+closeMsg.addEventListener("click", () => {
+    document.getElementsByClassName("profileSetupMsg")[0].style.top="-100%";
 });
 
 // localStorage.clear();
@@ -317,9 +329,30 @@ function checkProfile(){
     hr = Number(tob[0]);
     min = Number(tob[1]);
   }
+  else{
+    setTimeout(() => {
+        document.getElementsByClassName("profileSetupMsg")[0].style.visibility="visible";
+        document.getElementsByClassName("profileSetupMsg")[0].style.top="2vh";
+    }, 5000);
+  }
 }
 checkProfile();
 
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    setTimeout(() => {
+        document.getElementsByClassName("betterExperienceMsg")[0].style.opacity="1"; 
+    }, 10000);
+}
+
+document.getElementById("ok").addEventListener("click", () => {
+    document.getElementsByClassName("betterExperienceMsg")[0].style.opacity="0";
+    setTimeout(() => {
+        document.getElementsByClassName("betterExperienceMsg")[0].style.visibility="hidden";
+    }, 2000);
+        
+})
+
+// localStorage.clear();
 
 // let isUserScrolling = false;
 // let scrollAmount = 0;
