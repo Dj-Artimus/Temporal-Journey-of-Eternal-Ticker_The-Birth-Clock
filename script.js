@@ -78,19 +78,16 @@ document.getElementById("menuicon").addEventListener("click",() => {
     document.getElementsByClassName("menu")[0].style.display="flex";
     document.getElementById("menuicon").style.visibility="hidden";
     document.getElementById("menuClose").style.visibility="visible";
-    document.getElementById("title").style.transitionDelay="0s";
-    document.getElementById("title").style.color="transparent";
-    document.getElementById("title").style.visibility="hidden";
-    
+    document.getElementById("title").style.opacity="0";    
+    document.getElementsByClassName("focusMode")[0].style.visibility="visible";
+    document.getElementsByClassName("focusMode")[0].style.opacity="1";
 });
 document.getElementById("menuClose").addEventListener("click",() => {
     document.getElementById("menuClose").style.visibility="hidden";
     document.getElementsByClassName("menu")[0].style.animation="menuOut 0.1s ease-out";
     document.getElementsByClassName("menu")[0].style.display="none";
     document.getElementById("menuicon").style.visibility="visible";
-    document.getElementById("title").style.transitionDelay=".1s";
-    document.getElementById("title").style.color="";
-    document.getElementById("title").style.visibility="visible";
+    document.getElementById("title").style.opacity="1";
     document.getElementsByClassName("clock")[0].style.transitionDelay=".4s";
     document.getElementById("birthTicker").style.transitionDelay=".5s";
     document.getElementsByClassName("clock")[0].style.visibility="visible";
@@ -102,9 +99,19 @@ document.getElementById("menuClose").addEventListener("click",() => {
     document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
     document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
-
-
+    document.getElementsByClassName("focusMode")[0].style.opacity="0";
+    setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
+    document.getElementById("menuClose").style.animation="none";
 });
+
+document.getElementsByClassName("focusMode")[0].addEventListener("click",() => {
+    // document.getElementById("title").style.opacity="0";   
+    document.getElementsByClassName("menu")[0].style.animation="menuOut 0.1s ease-out";
+    document.getElementsByClassName("menu")[0].style.display="none"; 
+    document.getElementsByClassName("focusMode")[0].style.opacity="0";
+    setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
+    document.getElementById("menuClose").style.animation="closeBeatA 2s ease infinite";
+})
 
 document.getElementById("about").addEventListener("click",() => {
     document.getElementsByClassName("clock")[0].style.visibility="hidden";
@@ -299,6 +306,7 @@ set.addEventListener("submit",(e) => {
 let closeMsg = document.getElementById("closeMsg");
 closeMsg.addEventListener("click", () => {
     document.getElementsByClassName("profileSetupMsg")[0].style.top="-100%";
+    document.getElementsByClassName("profileSetupMsg")[0].style.opacity="0";
 });
 
 // localStorage.clear();
@@ -332,24 +340,27 @@ function checkProfile(){
   else{
     setTimeout(() => {
         document.getElementsByClassName("profileSetupMsg")[0].style.visibility="visible";
+        document.getElementsByClassName("profileSetupMsg")[0].style.opacity="1";
         document.getElementsByClassName("profileSetupMsg")[0].style.top="2vh";
     }, 5000);
   }
 }
 checkProfile();
 
-if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-    setTimeout(() => {
-        document.getElementsByClassName("betterExperienceMsg")[0].style.opacity="1"; 
-    }, 10000);
-}
+
+setTimeout(() => {
+    if(sessionStorage.getItem("betterExperienceMsgCount")==null){
+    document.getElementsByClassName("betterExperienceMsg")[0].style.opacity="1"; 
+    document.getElementsByClassName("betterExperienceMsg")[0].style.visibility="visible"; 
+}}, 1000);
+// }
 
 document.getElementById("ok").addEventListener("click", () => {
     document.getElementsByClassName("betterExperienceMsg")[0].style.opacity="0";
     setTimeout(() => {
         document.getElementsByClassName("betterExperienceMsg")[0].style.visibility="hidden";
     }, 2000);
-        
+    sessionStorage.setItem("betterExperienceMsgCount","1");        
 })
 
 // localStorage.clear();

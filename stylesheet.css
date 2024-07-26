@@ -41,7 +41,7 @@ body{
 }
 .changeTheme{
     height: 100vh;
-    transition: all 2s linear;
+    transition: background-color 2s linear;
     /* visibility: hidden; */
     /* background-color: rgba(255, 255, 255, 0.2); */
 }
@@ -52,13 +52,11 @@ nav{
     display: table;
 }
 nav h1#title{
-    /* visibility: hidden; */
-    /* display: none; */
     width: 90%;
     float: left;
     font-size: min(7vw,40px);
     margin-top: 15px;
-    transition: all .05s ease-out;
+    transition: opacity .25s ease;
 }
 .menuTriggers{
     position: relative;
@@ -122,7 +120,46 @@ nav h1#title{
     width:min(7vw,35px);
     position:absolute;
     left: 30%;
+    cursor: pointer;
+    transition: opacity 1s ease;
 }
+
+@keyframes closeBeatA {
+    0%,100%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0;
+    }
+}
+
+.focusMode{
+    opacity: 0;
+    visibility: hidden;
+    font-size: min(4.5vw,15px);
+    width: min(22vw,60px);
+    height: min(22vw,60px);
+    position: absolute;
+    margin-top: 1vh;
+    right:50%;
+    transform: translateX(50%);
+    text-align: center;
+    cursor: pointer;
+    transition: opacity 1s ease;
+}
+.focusMode h4{
+    display: none;
+    color: rgb(0, 170, 255);
+    
+}
+#focusMode{
+    fill:rgb(254, 45, 233);
+    border-radius: 50%;
+    padding: min(2vw,8px);
+    box-shadow: inset 1px 1px 2px rgba(245, 245, 245, 0.2), 1px 1px 2px rgba(0, 0, 0, 0.3);
+    width: min(10vw,65px);
+}
+
 main,nav{
     margin: auto;
     padding: 1.5vw;
@@ -284,6 +321,7 @@ main,nav{
 
 .profileSetupMsg,.betterExperienceMsg{
     visibility: visible;
+    opacity: 0;
     background-color: rgba(0, 0, 0, .9);
     position: fixed;
     top: -100vh;
@@ -295,7 +333,7 @@ main,nav{
     padding: min(1.5vw,8px) 3vw ;
     line-height: 1.5;
     /* top: -40%; */
-    transition: top 2.5s ease;
+    transition: top 2.5s ease, opacity 1s ease;
 }
 .profileSetupMsg h2,.betterExperienceMsg h2{
     text-align: left;
@@ -317,6 +355,7 @@ main,nav{
 .betterExperienceMsg{
     top:79vh;
     opacity: 0;
+    visibility: hidden;
     transition: opacity 1.5s ease;
 }
 
@@ -435,7 +474,7 @@ body{
         height: 55vh;
         left:50%;
         font-size: 2.5vw;
-        top: max(100%,100px);
+        top: max(150%,44px);
     }
     .profile .profileInfo{
         font-size: 2.5vw;
@@ -496,11 +535,19 @@ body{
         width: 3.5vw;
         bottom: -75vh;
     }
+    .profileSetupMsg,.betterExperienceMsg{
+        font-size: min(1.5vw,10px);
+        height: fit-content;
+    }
     .profileSetupMsg{
         top: -100vh;
     }
     .betterExperienceMsg{
         top:43vh;
+    }
+    #set,#ok{
+        font-size: 3vw;
+        border-radius: 4px;
     }
     @keyframes optionsInfoIn {
         from {
@@ -509,7 +556,7 @@ body{
         }
         to{
             height: 55vh;
-            top: max(110%,100px);
+            top: 150%;
         }
     }
     @keyframes optionsInfoOut{
@@ -518,7 +565,7 @@ body{
         to{
             height: 0vh;
             visibility: hidden;
-            top: 85%;
+            top: 155%;
         }
     }
 }
