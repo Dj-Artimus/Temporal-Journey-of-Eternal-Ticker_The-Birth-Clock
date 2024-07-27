@@ -14,53 +14,117 @@ var d = 1;
 var hr = 0;
 var min = 30;
 
-function birth(){
-    const birth = new Date(y,m,d,hr,min,49);
-    const now = new Date();
+// localStorage.clear();
 
-    const ageInMilliseconds = now - birth;
+function birth(){
+
+    const birthDate = new Date(y,m,d,hr,min);
+    const birthDateTime = birthDate.getTime();
+    const now = new Date();
+    const nowDateTime = now.getTime();
+    
+    // Calculate the difference in milliseconds
+    const diff = nowDateTime - birthDateTime;
+
+    // Handle leap years and DST
+    const birthYear = birthDate.getFullYear();
+    const nowYear = now.getFullYear();
+    // const isLeapYear = (birthYear % 4 === 0 && birthYear % 100 !== 0) || birthYear % 400 === 0;
+    const birthMonth = birthDate.getMonth();
+    const nowMonth = now.getMonth();
+    const birthDay = birthDate.getDate();
+    const nowDay = now.getDate();
+    const birthHour = birthDate.getHours();
+    const nowHour = now.getHours();
+    const birthMinute = birthDate.getMinutes();
+    const nowMinute = now.getMinutes();
+    const birthSecond = birthDate.getSeconds();
+    const nowSecond = now.getSeconds();
+    const birthDSTOffset = birthDate.getTimezoneOffset();
+    const nowDSTOffset = now.getTimezoneOffset();
+    const dstDiff = birthDSTOffset - nowDSTOffset;
+
+    let years = nowYear - birthYear;
+    let months = nowMonth - birthMonth;
+    let days = nowDay - birthDay;
+    let hours = nowHour - birthHour;
+    let minutes = nowMinute - birthMinute;
+    let seconds = nowSecond - birthSecond;
+
+    // Adjust for month and day differences
+    if (months < 0) {
+        years--;
+        months += 12;
+    }
+    if (days < 0) {
+        months--;
+        days += getDaysInMonth(birthYear, birthMonth);
+    }
+
+    hours = nowHour - birthHour;
+    if (nowHour < birthHour) {
+        hours = 24 - (birthHour - nowHour);
+    }
+    // Adjust for hour, minute, and second differences
+    if (hours < 0) {
+        hours += 24;
+        days--;
+    }
+    if (minutes < 0) {
+        hours--;
+        minutes += 60;
+    }
+    if (seconds < 0) {
+        minutes--;
+        seconds += 60;
+    }
+
+    // Adjust for DST
+    if (dstDiff !== 0) {
+        const dstHours = Math.floor(dstDiff / 60);
+        const dstMinutes = dstDiff % 60;
+        hours += dstHours;
+        minutes += dstMinutes;
+    }
+
+    // Handle edge cases
+    if (birthMonth === 1 && birthDay === 29) { // February 29
+        if (nowMonth < 2 || (nowMonth === 2 && nowDay < 29)) {
+            years--;
+        }
+    }
+
+    if (nowMonth === 11 && nowDay === 31) { // December 31
+        if (birthMonth > 11 || (birthMonth === 11 && birthDay > 31)) {
+            years++;
+        }
+    }
+
+    const ageInMilliseconds = now - birthDate;
     const ageInSeconds = ageInMilliseconds / 1000;
     const ageInMinutes = ageInSeconds / 60;
     const ageInHours = ageInMinutes / 60;
-    const ageInDays = ageInHours / 24;
 
-    // Handle the leap years and find precise month
-    const birthYear = birth.getFullYear();
-    const currentYear = now.getFullYear();
-    let leapDays = 0;
-    for (let year = birthYear; year <= currentYear; year++) {
-        if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
-            leapDays++;
-        }
-    }
-    const totalDays = ageInDays + leapDays;
-
-    const ageInMonths = totalDays / 30.436875; // Average month length
-    const ageInYears = ageInMonths / 12;
-
-    // Extract individual components
-    let years = Math.floor(ageInYears);
-    let months = Math.floor(ageInMonths % 12);
-    let days = Math.floor(ageInDays % 30.436875);
-    let hours = Math.floor(ageInHours % 24);
-    let minutes = Math.floor(ageInMinutes % 60);
-    let seconds = Math.floor(ageInSeconds % 60);
+    hours = Math.floor(ageInHours % 24);
+    minutes = Math.floor(ageInMinutes % 60);
+    seconds = Math.floor(ageInSeconds % 60);
     let miliseconds = Math.floor(ageInMilliseconds % 1000);
 
-    // add leading zero for single digit numbers
-    // months = leadingZero(months);
-    // hours = leadingZero(hours);
-    // seconds = leadingZero(seconds);
-
-document.getElementById("birthTicker").innerHTML = `
-<div><h2>${years}</h2><p>YEARS</p></div>
-<div><h2>${months}</h2><p>MONTHS</p></div>
-<div><h2>${days}</h2><p>DAYS</p></div>
-<div><h2>${hours}</h2><p>HOURS</p></div>
-<div><h2>${minutes}</h2><p>MINUTES</p></div>
-<div><h2>${seconds}</h2><p>SECONDS</p></div>
-<div id="mili"><h2>${Math.floor(miliseconds/100)}</h2><p>MILI</p></div>`;
-
+    if((birthHour==nowHour) && (birthMinute>nowMinute)){
+        days--;
+    }
+    
+    document.getElementById("birthTicker").innerHTML = `
+    <div><h2>${years}</h2><p>YEARS</p></div>
+    <div><h2>${months}</h2><p>MONTHS</p></div>
+    <div><h2>${days}</h2><p>DAYS</p></div>
+    <div><h2>${hours}</h2><p>HOURS</p></div>
+    <div><h2>${minutes}</h2><p>MINUTES</p></div>
+    <div><h2>${seconds}</h2><p>SECONDS</p></div>
+    <div id="mili"><h2>${Math.floor(miliseconds/100)}</h2><p>MILI</p></div>
+    `
+    
+}
 
 // document.getElementById("birthTicker").innerHTML = `
 // <div style="grid-area:1 / 1 / span 1 / span 1"><h2>${Math.round(ageInYears)}</h2><p>YEARS</p></div>
@@ -71,7 +135,6 @@ document.getElementById("birthTicker").innerHTML = `
 // <div style="grid-area:3 / 2 / span 1 / span 1"><h2>${Math.round(ageInSeconds).toLocaleString('en-IN')}</h2><p>SECONDS</p></div>
 // <div id="mili" style="grid-area:4 / 1 / span 1 / span 2"><h2>${ageInMilliseconds.toLocaleString('en-IN')}</h2><p>MILI SECONDS</p></div>`;
 
-}
 
 document.getElementById("menuicon").addEventListener("click",() => {
     document.getElementsByClassName("menu")[0].style.animation="menuIn 0.1s ease";
@@ -79,8 +142,16 @@ document.getElementById("menuicon").addEventListener("click",() => {
     document.getElementById("menuicon").style.visibility="hidden";
     document.getElementById("menuClose").style.visibility="visible";
     document.getElementById("title").style.opacity="0";    
+    document.getElementById("title").style.transitionDelay="0s";
+
     document.getElementsByClassName("focusMode")[0].style.visibility="visible";
     document.getElementsByClassName("focusMode")[0].style.opacity="1";
+    document.getElementById("focusTitle").style.display="block";    
+    document.getElementById("focusTitle").style.opacity="1";    
+    setTimeout(() => {
+        document.getElementById("focusTitle").style.opacity="0";    
+        document.getElementById("focusTitle").style.display="block";    
+    }, 5000);
 });
 document.getElementById("menuClose").addEventListener("click",() => {
     document.getElementById("menuClose").style.visibility="hidden";
@@ -88,6 +159,7 @@ document.getElementById("menuClose").addEventListener("click",() => {
     document.getElementsByClassName("menu")[0].style.display="none";
     document.getElementById("menuicon").style.visibility="visible";
     document.getElementById("title").style.opacity="1";
+    document.getElementById("title").style.transitionDelay=".25s";
     document.getElementsByClassName("clock")[0].style.transitionDelay=".4s";
     document.getElementById("birthTicker").style.transitionDelay=".5s";
     document.getElementsByClassName("clock")[0].style.visibility="visible";
@@ -101,16 +173,25 @@ document.getElementById("menuClose").addEventListener("click",() => {
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
     document.getElementsByClassName("focusMode")[0].style.opacity="0";
     setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
-    document.getElementById("menuClose").style.animation="none";
 });
 
-document.getElementsByClassName("focusMode")[0].addEventListener("click",() => {
-    // document.getElementById("title").style.opacity="0";   
-    document.getElementsByClassName("menu")[0].style.animation="menuOut 0.1s ease-out";
-    document.getElementsByClassName("menu")[0].style.display="none"; 
-    document.getElementsByClassName("focusMode")[0].style.opacity="0";
-    setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
-    document.getElementById("menuClose").style.animation="closeBeatA 2s ease infinite";
+let isFocusMode = true;
+document.getElementsByClassName("focusMode")[0].addEventListener("click", () => {
+    if (isFocusMode) {
+        document.getElementById("menuClose").style.visibility = "hidden";
+        document.getElementsByClassName("menu")[0].style.animation = "menuOut 0.1s ease-out";
+        document.getElementsByClassName("menu")[0].style.display = "none";
+    document.getElementsByClassName("focusMode")[0].style.opacity=".3";
+
+        isFocusMode = false;
+    }
+    else {
+        document.getElementsByClassName("focusMode")[0].style.opacity = "0";
+        setTimeout(() => { document.getElementsByClassName("focusMode")[0].style.visibility = "hidden" }, 800);
+        document.getElementById("menuicon").style.visibility = "visible";
+        document.getElementById("title").style.opacity = "1";
+        isFocusMode = true;
+    }
 })
 
 document.getElementById("about").addEventListener("click",() => {
@@ -129,9 +210,13 @@ document.getElementById("about").addEventListener("click",() => {
     document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
-
+    document.getElementsByClassName("focusMode")[0].style.opacity="0";
+    setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
 
     setTimeout(smoothScroll(),5000);
+
+
+
 
 });
 document.getElementById("theme").addEventListener("click",() => {
@@ -150,7 +235,8 @@ document.getElementById("theme").addEventListener("click",() => {
     document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
-
+    document.getElementsByClassName("focusMode")[0].style.opacity="0";
+    setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
 
 });
 document.getElementById("profile").addEventListener("click",() => {
@@ -169,6 +255,8 @@ document.getElementById("profile").addEventListener("click",() => {
     document.getElementsByClassName("themes")[0].style.visibility="hidden";
     document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementsByClassName("setupForm")[0].style.visibility="hidden";
+    document.getElementsByClassName("focusMode")[0].style.opacity="0";
+    setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
 });
 
 document.getElementById("closeOption").addEventListener("click",() => {
@@ -183,6 +271,8 @@ document.getElementById("closeOption").addEventListener("click",() => {
     document.getElementById("setUpBtn").style.animation="setUpOut .5s linear forwards";
     document.getElementsByClassName("setupForm")[0].style.animation="optionsInfoOut .5s ease-in both";
     document.getElementById("setBtn").style.animation="setUpOut .5s linear forwards";
+    document.getElementsByClassName("focusMode")[0].style.visibility="visible";
+    document.getElementsByClassName("focusMode")[0].style.opacity="1";
 });
 
 document.getElementById("blackTheme").addEventListener("click",() => {
