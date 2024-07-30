@@ -29,7 +29,6 @@ function birth(){
     // Handle leap years and DST
     const birthYear = birthDate.getFullYear();
     const nowYear = now.getFullYear();
-    // const isLeapYear = (birthYear % 4 === 0 && birthYear % 100 !== 0) || birthYear % 400 === 0;
     const birthMonth = birthDate.getMonth();
     const nowMonth = now.getMonth();
     const birthDay = birthDate.getDate();
@@ -60,8 +59,6 @@ function birth(){
         months--;
         days += getDaysInMonth(birthYear, birthMonth);
     }
-
-    hours = nowHour - birthHour;
     if (nowHour < birthHour) {
         hours = 24 - (birthHour - nowHour);
     }
