@@ -126,10 +126,6 @@ nav h1#title{
 .focusMode{
     opacity: 0;
     visibility: hidden;
-    /* width: min(22vw,60px); */
-    /* height: min(22vw,60px);
-    width: 100px;
-    height: 100px; */
     position: absolute;
     margin-top: 1vh;
     right:50%;
@@ -140,7 +136,6 @@ nav h1#title{
 }
 .focusMode h4{
     display: none;
-    /* color: rgb(0, 170, 255); */
     font-size: min(3.5vw,15px);
     transition: opacity 1s ease;
     
@@ -151,7 +146,6 @@ nav h1#title{
     padding: min(.5vw,2px);
     box-shadow: inset 1px 1px 2px rgba(245, 245, 245, 0.2), 1px 1px 2px rgba(0, 0, 0, 0.3);
     width: min(10vw,65px);
-    /* width: 100px; */
 }
 
 #focusMode *{
@@ -187,7 +181,6 @@ main,nav{
     margin: 4vh auto;
 }
 #birthTicker div{
-    /* display: none; */
     padding: 2vh 2vw;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.1);
@@ -204,7 +197,6 @@ main,nav{
     font-weight: 900;
 }
 .clock{
-    /* display: none; */
     font-size: min(5vw,35px);
     margin: auto;
     text-align: center;
@@ -286,7 +278,6 @@ main,nav{
     font-size: min(5vw,25px);
 }
 .profile button,#setBtn{
-    /* visibility: visible; */
     border : none;
     border-radius: 5px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.974),-1px -.5px 5px rgba(0, 0, 0, 0);
@@ -316,7 +307,6 @@ main,nav{
 #closeOption{
     visibility: hidden;
     position: absolute;
-    /* top: 88vh; */
     left: 50%;
     width:min(7vw,35px);
     margin-right:-25vw;
@@ -327,8 +317,6 @@ main,nav{
 
 .alerts{
     position: relative;
-    /* background: #000; */
-    /* height: 0; */
 }
 
 .profileSetupMsg,.betterExperienceMsg{
@@ -337,14 +325,12 @@ main,nav{
     background-color: rgba(0, 0, 0, .9);
     position: fixed;
     top: -100vh;
-    /* bottom: 55%; */
     font-size: min(2.5vw,13px);
     width: min(90%,580px);
     height: fit-content;
     border: 1px solid;
     padding: min(1.5vw,8px) 3vw ;
     line-height: 1.5;
-    /* top: -40%; */
     transition: top 2.5s ease, opacity 1s ease;
 }
 .profileSetupMsg h2,.betterExperienceMsg h2{
@@ -371,23 +357,6 @@ main,nav{
     transition: opacity 1.5s ease;
 }
 
-
-
-/* .gred2{
-    background-image:radial-gradient(closest-side at 40% 40% , rgba(35, 115, 227, 0.762),rgba(102, 82, 255, 0.318));
-}
-body{
-    background-image:linear-gradient(to top left,#ce0d37 1%,#7642b5 15%,#6b54ef 28%,#574e72 49%,#6048f9 67%,#b65151 84%);
-}
-.gred1{
-    background-image:linear-gradient(60deg,#0008ff96 10%,#3061ff15 50%);
-}
-.gred3{
-    background-image:radial-gradient( closest-side at 95% 4%, rgba(36, 171, 255, 0.622) 30%, rgba(189, 68, 44, 0) 1000%, rgba(55, 180, 253, 0.319) 5000%);
-}
-.changeTheme{
-    background-color: rgba(255, 255, 255, 0.0);
-} */
 @media screen and (min-width:600px) {
     #menuicon{
         width: 60px;

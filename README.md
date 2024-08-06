@@ -1,11 +1,27 @@
 # Temporal-Journey-of-Eternal-Ticker(The-Birth-Clock)
+  
+ ⭐ Project Overview :
+ Temporal Journey of Eternal Ticker is a progressive web app that functions as a running timer, ticking every millisecond from the users birth date and time. It visually represents the time elapsed since the users existence in the universe. Built using HTML, CSS, and JavaScript, this project was a great opportunity to hone my skills and explore new technologies.
+
+  Key Features:
+
+      Real-Time Timer : Continuously updates to show the exact time since the users birth.
+
+      Progressive Web App : Offers a  app like experience across all operating systems.
+
+      Responsive Design : Ensures a seamless experience on both desktop and mobile devices.
+
+      Deployment:Available on GitHub Pages and Netlify for easy access.
+
+<a href="https://djartimus.github.io/The-Birth-Clock/">Click To Visit Github Page</a><br>
+<a href="https://the-birth-clock.netlify.app">Click To Visit Progressive Web App on Netlify</a>
+
 "Temporal Journey of Eternal Ticker" is a captivating and thought-provoking name. Let's delve into its significance and meaning:
 
-**The Birth Clock :**
+**⌛ The Birth Clock :**
 - It is a just a normal runnig timer, but special for me because it starts ticking when I was born.<br>
-<i>Temporal Journey of Eternal Ticker(The Birth Clock)</i> gives me exact figures of since when I EXIST IN THIS UNIVERSE.   
-<a href="https://djartimus.github.io/The-Birth-Clock/">Click To Visit</a><br>
-<a href="https://the-birth-clock.netlify.app">Click To Visit Progressive Web App</a>
+<i>Temporal Journey of Eternal Ticker(The Birth Clock)</i> gives me exact figures of since when <br> I EXIST IN THIS UNIVERSE. 
+
 1. **Temporal Journey**:
    - **Temporal**: Refers to time, the ever-flowing river of moments that shape our existence. It encapsulates our experiences, memories, and the unfolding of events.
    - **Journey**: Implies movement, progression, and exploration. Life itself is a journey—a passage through time.

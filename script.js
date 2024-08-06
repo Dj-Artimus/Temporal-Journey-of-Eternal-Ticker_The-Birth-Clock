@@ -7,14 +7,11 @@ document.getElementById("date").innerHTML = date ;
 birth();
 },1)
 
-
 var y = 2002;
 var m = 5;
 var d = 1;
 var hr = 0;
 var min = 30;
-
-// localStorage.clear();
 
 function birth(){
 
@@ -123,16 +120,6 @@ function birth(){
     
 }
 
-// document.getElementById("birthTicker").innerHTML = `
-// <div style="grid-area:1 / 1 / span 1 / span 1"><h2>${Math.round(ageInYears)}</h2><p>YEARS</p></div>
-// <div style="grid-area:1 / 2 / span 1 / span 1"><h2>${Math.round(ageInMonths).toLocaleString('en-IN')}</h2><p>MONTHS</p></div>
-// <div style="grid-area:2 / 1 / span 1 / span 1"><h2>${Math.round(ageInDays).toLocaleString('en-IN')}</h2><p>DAYS</p></div>
-// <div style="grid-area:2 / 2 / span 1 / span 1"><h2>${Math.round(ageInHours).toLocaleString('en-IN')}</h2><p>HOURS</p></div>
-// <div style="grid-area:3 / 1 / span 1 / span 1"><h2>${Math.round(ageInMinutes).toLocaleString('en-IN')}</h2><p>MINUTES</p></div>
-// <div style="grid-area:3 / 2 / span 1 / span 1"><h2>${Math.round(ageInSeconds).toLocaleString('en-IN')}</h2><p>SECONDS</p></div>
-// <div id="mili" style="grid-area:4 / 1 / span 1 / span 2"><h2>${ageInMilliseconds.toLocaleString('en-IN')}</h2><p>MILI SECONDS</p></div>`;
-
-
 document.getElementById("menuicon").addEventListener("click",() => {
     document.getElementsByClassName("menu")[0].style.animation="menuIn 0.1s ease";
     document.getElementsByClassName("menu")[0].style.display="flex";
@@ -150,6 +137,7 @@ document.getElementById("menuicon").addEventListener("click",() => {
         document.getElementById("focusTitle").style.display="block";    
     }, 5000);
 });
+
 document.getElementById("menuClose").addEventListener("click",() => {
     document.getElementById("menuClose").style.visibility="hidden";
     document.getElementsByClassName("menu")[0].style.animation="menuOut 0.1s ease-out";
@@ -211,10 +199,6 @@ document.getElementById("about").addEventListener("click",() => {
     setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
 
     setTimeout(smoothScroll(),5000);
-
-
-
-
 });
 document.getElementById("theme").addEventListener("click",() => {
     document.getElementsByClassName("clock")[0].style.visibility="hidden";
@@ -236,6 +220,7 @@ document.getElementById("theme").addEventListener("click",() => {
     setTimeout(()=>{document.getElementsByClassName("focusMode")[0].style.visibility="hidden"},800);
 
 });
+
 document.getElementById("profile").addEventListener("click",() => {
     document.getElementsByClassName("clock")[0].style.visibility="hidden";
     document.getElementById("birthTicker").style.visibility="hidden";
@@ -288,6 +273,7 @@ document.getElementById("blackTheme").addEventListener("click",() => {
         g3.backgroundImage = "radial-gradient( closest-side at 95% 4%, rgba(2, 76, 146, 0.845) 30%, rgba(189, 68, 44, 0.05) 1000%, rgba(135, 207, 235, 0) 5000%)";
     }, 1000); 
 });
+
 document.getElementById("whiteTheme").addEventListener("click",() => {
     document.getElementsByClassName("changeTheme")[0].style.backgroundColor="black";
     document.body.style.filter="invert(1)";
@@ -396,7 +382,6 @@ closeMsg.addEventListener("click", () => {
     document.getElementsByClassName("profileSetupMsg")[0].style.opacity="0";
 });
 
-// localStorage.clear();
 function checkProfile(){
   let checkProfile = localStorage.getItem("name");
   if(checkProfile){
@@ -449,52 +434,3 @@ document.getElementById("ok").addEventListener("click", () => {
     }, 2000);
     sessionStorage.setItem("betterExperienceMsgCount","1");        
 })
-
-// localStorage.clear();
-
-// let isUserScrolling = false;
-// let scrollAmount = 0;
-// const scrollStep = 1; // Adjust this value for faster/slower scrolling
-// const scrollInterval = 30; // Adjust this value for smoother/less smooth scrolling
-// let scrollTimeout;
-
-// function smoothScroll() {
-//   const div = document.getElementsByClassName('about')[0];
-
-//   function scrollContent() {
-//     if (!isUserScrolling) {
-//       if (scrollAmount < div.scrollHeight - div.clientHeight) {
-//         scrollAmount += scrollStep;
-//         div.scrollTop = scrollAmount;
-//       } else {
-//         scrollAmount = 0; // Reset to top when reaching the bottom
-//       }
-//     }
-//   }
-
-//   setInterval(scrollContent, scrollInterval);
-
-//   div.addEventListener('scroll', () => {
-//     isUserScrolling = true;
-//     clearTimeout(scrollTimeout);
-//     scrollTimeout = setTimeout(() => {
-//       isUserScrolling = false;
-//     }, 1); // Adjust the timeout duration as needed
-//   });
-
-//   div.addEventListener('wheel', () => {
-//     isUserScrolling = true;
-//     clearTimeout(scrollTimeout);
-//     scrollTimeout = setTimeout(() => {
-//       isUserScrolling = false;
-//     }, 2000); // Adjust the timeout duration as needed
-//   });
-
-//   div.addEventListener('touchmove', () => {
-//     isUserScrolling = true;
-//     clearTimeout(scrollTimeout);
-//     scrollTimeout = setTimeout(() => {
-//       isUserScrolling = false;
-//     }, 2000); // Adjust the timeout duration as needed
-//   });
-// }
